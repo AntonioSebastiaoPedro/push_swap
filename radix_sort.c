@@ -1,48 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 14:56:37 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/16 16:00:07 by ansebast         ###   ########.fr       */
+/*   Created: 2024/08/16 15:17:56 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/16 15:57:49 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
 
-void	swap(t_list **stack)
+void	radix_sort(t_list **stack_a)
 {
-	t_list	*first;
-	t_list	*second;
+	t_list *stack_b;
+	int max;
+	int digits;
+	int exp;
+	int i;
+	int value;
 
-	if (*stack && (*stack)->next)
+	max = ft_lstget_max(*stack_a);
+	digits = ft_count_digits(max);
+	exp = 1;
+	i = 0;
+	while (i < digits)
 	{
-		first = *stack;
-		second = (*stack)->next;
-		first->next = second->next;
-		second->next = first;
-		*stack = second;
+		stack_b = NULL;
+
+		while (*stack_a)
+		{
+			value = *(int *)(*stack_a)->content;
+			if ((value / exp) % 10 == 0)
+				pb(stack_a, &stack_b);
+			else
+				ra(stack_a);
+		}
+
+		while (stack_b)
+			pa(&stack_b, stack_a);
+
+		exp *= 10;
+		i++;
 	}
-}
-
-void	sa(t_list **stack_a)
-{
-	swap(stack_a);
-	printf("sa\n");
-}
-
-void	sb(t_list **stack_b)
-{
-	swap(stack_b);
-	printf("sb\n");
-}
-
-void	ss(t_list **stack_a, t_list **stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
-	printf("ss\n");
 }

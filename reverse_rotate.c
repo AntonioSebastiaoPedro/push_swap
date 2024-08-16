@@ -1,11 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 14:56:37 by ansebast          #+#    #+#             */
+/*   Created: 2024/08/01 15:12:54 by ansebast          #+#    #+#             */
 /*   Updated: 2024/08/16 16:00:07 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -13,36 +13,38 @@
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
 
-void	swap(t_list **stack)
+void	reverse_rotate(t_list **stack)
 {
-	t_list	*first;
-	t_list	*second;
+	t_list	*second_last;
+	t_list	*last;
 
 	if (*stack && (*stack)->next)
 	{
-		first = *stack;
-		second = (*stack)->next;
-		first->next = second->next;
-		second->next = first;
-		*stack = second;
+		second_last = *stack;
+		while (second_last->next->next)
+			second_last = second_last->next;
+		last = second_last->next;
+		second_last->next = NULL;
+		last->next = *stack;
+		*stack = last;
 	}
 }
 
-void	sa(t_list **stack_a)
+void	rra(t_list **stack_a)
 {
-	swap(stack_a);
-	printf("sa\n");
+	reverse_rotate(stack_a);
+	printf("rra\n");
 }
 
-void	sb(t_list **stack_b)
+void	rrb(t_list **stack_b)
 {
-	swap(stack_b);
-	printf("sb\n");
+	reverse_rotate(stack_b);
+	printf("rrb\n");
 }
 
-void	ss(t_list **stack_a, t_list **stack_b)
+void	rrr(t_list **stack_a, t_list **stack_b)
 {
-	swap(stack_a);
-	swap(stack_b);
-	printf("ss\n");
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
+	printf("rrr\n");
 }
