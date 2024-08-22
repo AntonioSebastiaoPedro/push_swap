@@ -6,13 +6,13 @@
 #    By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/01 13:19:28 by ansebast          #+#    #+#              #
-#    Updated: 2024/08/21 09:33:00 by ansebast         ###   ########.fr        #
+#    Updated: 2024/08/22 18:36:37 by ansebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 LIBFT = ./libft/libft.a
-SRC = push_swap.c insertion_sort.c push.c reverse_rotate.c rotate.c swap.c validation.c
+SRC = push_swap.c push.c reverse_rotate.c rotate.c swap.c validation.c
 OBJ = $(SRC:.c=.o)
 
 CC = cc

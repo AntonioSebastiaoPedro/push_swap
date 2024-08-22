@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:01:51 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/22 18:00:41 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:35:06 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ra(t_stack **a)
 	first = *a;
 	*a = first->next;
 	(*a)->previous = NULL;
-	last = ft_lstlast(a);
+	last = ft_lstlast(*a);
 	last->next = first;
 	first->previous = last;
 	first->next = NULL;
@@ -42,7 +42,7 @@ void	rb(t_stack **b)
 	first = *b;
 	*b = first->next;
 	(*b)->previous = NULL;
-	last = ft_lstlast(b);
+	last = ft_lstlast(*b);
 	last->next = first;
 	first->previous = last;
 	first->next = NULL;
