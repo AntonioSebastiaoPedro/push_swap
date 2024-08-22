@@ -6,42 +6,50 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 14:56:37 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/22 12:38:07 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:53:17 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
-void	swap(t_list **stack)
+void	sa(t_stack **a)
 {
-	t_list	*first;
-	t_list	*second;
+	t_stack	*first;
+	t_stack	*second;
 
-	if (*stack && (*stack)->next)
+	if (*a == NULL || (*a)->next == NULL)
 	{
-		first = *stack;
-		second = (*stack)->next;
-		first->next = second->next;
-		second->next = first;
-		*stack = second;
+		return ;
 	}
+	first = *a;
+	second = first->next;
+	first->next = second->next;
+	second->previous = NULL;
+	second->next = first;
+	first->previous = second;
+	*a = second;
 }
 
-void	sa(t_list **stack_a)
+void	sb(t_stack **b)
 {
-	swap(stack_a);
-	printf("sa\n");
+	t_stack	*first;
+	t_stack	*second;
+
+	if (*b == NULL || (*b)->next == NULL)
+	{
+		return ;
+	}
+	first = *b;
+	second = first->next;
+	first->next = second->next;
+	second->previous = NULL;
+	second->next = first;
+	first->previous = second;
+	*b = second;
 }
 
-void	sb(t_list **stack_b)
+void	ss(t_stack **a, t_stack **b)
 {
-	swap(stack_b);
-	printf("sb\n");
-}
-
-void	ss(t_list **stack_a, t_list **stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
-	printf("ss\n");
+	sa(a);
+	sb(b);
 }
