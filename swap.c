@@ -6,11 +6,10 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 14:56:37 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/16 16:00:07 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:38:07 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
 
 void	swap(t_list **stack)

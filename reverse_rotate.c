@@ -6,12 +6,11 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:12:54 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/16 16:00:07 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/22 11:35:30 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
-#include "libft/libft.h"
+#include "pushswap.h"
 
 void	reverse_rotate(t_list **stack)
 {
@@ -33,18 +32,18 @@ void	reverse_rotate(t_list **stack)
 void	rra(t_list **stack_a)
 {
 	reverse_rotate(stack_a);
-	printf("rra\n");
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	rrb(t_list **stack_b)
 {
 	reverse_rotate(stack_b);
-	printf("rrb\n");
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
-	printf("rrr\n");
+	ft_putstr_fd("rrr\n", 1);
 }

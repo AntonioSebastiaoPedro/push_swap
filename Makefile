@@ -6,39 +6,35 @@
 #    By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/01 13:19:28 by ansebast          #+#    #+#              #
-#    Updated: 2024/08/16 15:27:38 by ansebast         ###   ########.fr        #
+#    Updated: 2024/08/21 09:33:00 by ansebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = push_swap
+LIBFT = ./libft/libft.a
+SRC = push_swap.c insertion_sort.c push.c reverse_rotate.c rotate.c swap.c validation.c
+OBJ = $(SRC:.c=.o)
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-NAME = libft.a
 
-GREEN = \033[0;32m
-RED = \033[0;31m
-YELLOW = \033[0;33m
-CYAN = \033[0;36m
-RESET = \033[0m
+all: $(LIBFT) $(NAME)
 
-SRC = $(filter-out $(BONUS_SRC), $(wildcard ft_*.c))
-OBJS = $(SRC:.c=.o)
+$(LIBFT):
+	make -C ./libft
 
-all: $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L ./libft -lft
 
-$(NAME): $(OBJS)
-	@echo "$(CYAN)Creating the library $(NAME)...$(RESET)"
-	ar rcs $(NAME) $(OBJS)
-	@echo "$(GREEN)Library $(NAME) successfully created!$(RESET)"
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "$(RED)Removing all object files...$(RESET)"
-	rm -f $(OBJS) $(BONUS_OBJS)
-	
+	rm -f $(OBJ)
+	make clean -C ./libft
+
 fclean: clean
-	@echo "$(RED)Removing the library $(NAME)...$(RESET)"
 	rm -f $(NAME)
-	@echo "$(GREEN)Library $(NAME) successfully removed!$(RESET)"
+	make fclean -C ./libft
 
 re: fclean all
-
-.PHONY: all clean fclean re
