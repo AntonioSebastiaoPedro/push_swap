@@ -5,36 +5,52 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/01 13:19:28 by ansebast          #+#    #+#              #
-#    Updated: 2024/08/22 18:36:37 by ansebast         ###   ########.fr        #
+#    Created: 2024/05/29 11:32:47 by ansebast          #+#    #+#              #
+#    Updated: 2024/08/23 14:09:24 by ansebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
-LIBFT = ./libft/libft.a
-SRC = push_swap.c push.c reverse_rotate.c rotate.c swap.c validation.c
-OBJ = $(SRC:.c=.o)
-
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
+NAME = push_swap
+LIBFT_A = libft.a
 
-all: $(LIBFT) $(NAME)
+SRC = push_swap.c push.c reverse_rotate.c rotate.c swap.c validation.c sort.c \
+      ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
+      ft_lstlast.c ft_lstmin.c ft_lstnew.c ft_lstsize.c ft_lstprint.c ft_lstindex.c
 
-$(LIBFT):
-	make -C ./libft
+OBJ = $(SRC:.c=.o)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L ./libft -lft
+GREEN = \033[0;32m
+RED = \033[0;31m
+YELLOW = \033[0;33m
+RESET = \033[0m
+
+all: $(NAME)
+
+$(NAME): $(LIBFT_A) $(OBJ)
+	@echo "$(YELLOW)Linking the objects...$(RESET)"
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L. -lft
+	@echo "$(GREEN)Executable $(NAME) created successfully!$(RESET)"
+
+$(LIBFT_A): $(OBJ)
+	@echo "$(YELLOW)Creating the library $(LIBFT_A)...$(RESET)"
+	ar rcs $(LIBFT_A) $(OBJ)
+	@echo "$(GREEN)Library $(LIBFT_A) created successfully!$(RESET)"
 
 %.o: %.c
+	@echo "$(YELLOW)Compiling $<...$(RESET)"
 	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(GREEN)File compiled successfully!$(RESET)"
 
 clean:
+	@echo "$(RED)Removing all object files...$(RESET)"
 	rm -f $(OBJ)
-	make clean -C ./libft
 
 fclean: clean
-	rm -f $(NAME)
-	make fclean -C ./libft
+	@echo "$(RED)Removing the executables and libraries...$(RESET)"
+	rm -f $(NAME) $(LIBFT_A)
 
 re: fclean all
+
+.PHONY: all clean fclean re

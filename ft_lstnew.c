@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/23 12:52:30 by ansebast         ###   ########.fr       */
+/*   Created: 2024/05/29 11:29:28 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/22 16:59:22 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(int argc, char *argv[])
+t_stack	*ft_lstnew(int value)
 {
-        t_stack *a = NULL;
-	t_stack *b = NULL;
-        int     i;
-        
-        i = 1;
-	if (argc < 2)
-	{
-		return (0);
-	}
+	t_stack *new_node;
 
-	while (i < argc)
+	new_node = (t_stack *)malloc(sizeof(t_stack));
+	if (!new_node)
 	{
-		add_to_stack(&a, atoi(argv[i]));
-                i++;
+		printf("Erro ao alocar memória\n");
+		return (NULL);
 	}
-        printf("Antes:\n");
-        ft_lstprint(a);
-	sort_stack(&a, &b);
-        printf("Depois:\n");
-        ft_lstprint(a);
-	return (0);
+	new_node->value = value;
+	new_node->index = 0;
+	new_node->previous = NULL;
+	new_node->next = NULL;
+	return (new_node);
 }

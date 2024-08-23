@@ -1,9 +1,6 @@
 {
         "files.associations": {
                 "*.embeddedhtml": "html",
-                "ft_printf.h": "c",
-                "stdlib.h": "c",
-                "libft.h": "c",
-                "pushswap.h": "c"
+                "libft.h": "c"
         }
 }

@@ -6,11 +6,11 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 14:56:37 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/22 17:53:17 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:40:33 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
 void	sa(t_stack **a)
 {

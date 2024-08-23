@@ -6,11 +6,11 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 09:14:42 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/21 10:03:29 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:40:33 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
 int	is_sorted(int *arr, int size)
 {

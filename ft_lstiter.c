@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/23 12:52:30 by ansebast         ###   ########.fr       */
+/*   Created: 2024/05/29 11:29:07 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/22 16:52:57 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(int argc, char *argv[])
+void	ft_lstiter(t_stack *head, void (*f)(int))
 {
-        t_stack *a = NULL;
-	t_stack *b = NULL;
-        int     i;
-        
-        i = 1;
-	if (argc < 2)
+	while (head)
 	{
-		return (0);
+		f(head->value);
+		head = head->next;
 	}
-
-	while (i < argc)
-	{
-		add_to_stack(&a, atoi(argv[i]));
-                i++;
-	}
-        printf("Antes:\n");
-        ft_lstprint(a);
-	sort_stack(&a, &b);
-        printf("Depois:\n");
-        ft_lstprint(a);
-	return (0);
 }

@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/23 12:52:30 by ansebast         ###   ########.fr       */
+/*   Created: 2024/08/23 08:27:21 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/23 09:01:32 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(int argc, char *argv[])
+t_stack	*ft_lstmin(t_stack *head)
 {
-        t_stack *a = NULL;
-	t_stack *b = NULL;
-        int     i;
-        
-        i = 1;
-	if (argc < 2)
-	{
-		return (0);
-	}
+	t_stack *min_node;
 
-	while (i < argc)
+	min_node = head;
+	while (head != NULL)
 	{
-		add_to_stack(&a, atoi(argv[i]));
-                i++;
+		if (head->value < min_node->value)
+			min_node = head;
+		head = head->next;
 	}
-        printf("Antes:\n");
-        ft_lstprint(a);
-	sort_stack(&a, &b);
-        printf("Depois:\n");
-        ft_lstprint(a);
-	return (0);
+	return (min_node);
 }
