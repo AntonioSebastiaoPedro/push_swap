@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/24 20:45:13 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/24 21:54:54 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ int	ft_lstgetindex(t_stack **head, t_stack *value)
 		current = current->next;
 	}
 	return (-1);
+}
+
+t_stack	*ft_lstmax(t_stack *head)
+{
+	t_stack *max_node;
+
+	max_node = head;
+	while (head != NULL)
+	{
+		if (head->value > max_node->value)
+			max_node = head;
+		head = head->next;
+	}
+	return (max_node);
 }
 
 void	sort_small_stack(t_stack **a)
