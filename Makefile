@@ -6,7 +6,7 @@
 #    By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 11:32:47 by ansebast          #+#    #+#              #
-#    Updated: 2024/08/23 14:09:24 by ansebast         ###   ########.fr        #
+#    Updated: 2024/08/23 21:33:28 by ansebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,5 +52,7 @@ fclean: clean
 	rm -f $(NAME) $(LIBFT_A)
 
 re: fclean all
+
+run: ./push_swap
 
 .PHONY: all clean fclean re

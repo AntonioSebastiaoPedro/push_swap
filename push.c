@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 14:59:10 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/23 11:40:33 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/24 08:11:58 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	pa(t_stack **a, t_stack **b)
 	}
 	top_b->previous = NULL;
 	*a = top_b;
+
+        ft_lstupdateindx(*a);
 }
 
 void	pb(t_stack **a, t_stack **b)
@@ -57,4 +59,6 @@ void	pb(t_stack **a, t_stack **b)
 	}
 	top_a->previous = NULL;
 	*b = top_a;
+
+        ft_lstupdateindx(*a);
 }

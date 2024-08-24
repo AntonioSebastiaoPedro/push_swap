@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/23 14:01:58 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/24 13:55:11 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ typedef struct t_stack
 	struct t_stack	*previous;
 	struct t_stack	*next;
 }					t_stack;
+int					partition(t_stack **a, int low, int high);
+void				quicksort(t_stack **a, int low, int high);
+t_stack				*ft_lstget_at(t_stack *head, int index);
+void				swap_nodes(t_stack **head, t_stack *node1, t_stack *node2);
 void				ft_lstadd_front(t_stack **head, t_stack *new_node);
 void				ft_lstiter(t_stack *head, void (*f)(int));
 void				ft_lstdelone(t_stack *node);
@@ -43,7 +47,7 @@ void				sb(t_stack **b);
 void				ss(t_stack **a, t_stack **b);
 void				sort_stack(t_stack **a, t_stack **b);
 void				add_to_stack(t_stack **a, int value);
-void				ft_lstindex(t_stack **head);
+void				ft_lstupdateindx(t_stack *head);
 void				ft_lstadd_back(t_stack **head, t_stack *new_node);
 int					ft_lstsize(t_stack *lst);
 t_stack				*ft_lstnew(int content);
