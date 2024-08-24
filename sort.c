@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/24 19:31:37 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/24 20:35:30 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ void	ft_lstupdateindx(t_stack *head)
 		index++;
 		current = current->next;
 	}
+}
+
+int	ft_lstgetindex(t_stack **head, t_stack *value)
+{
+	t_stack	*current;
+
+	current = *head;
+	while (current != NULL)
+	{
+		if (current == value)
+			return (value->index);
+		current = current->next;
+	}
+	return (-1);
 }
 
 void	sort_small_stack(t_stack **a)
@@ -92,53 +106,41 @@ t_stack	*find_predecessor(t_stack *b, int value)
 	{
 		if (b->value < value)
 		{
-                        if (!prev || prev->value < b->value)
-                                prev = b;
+			if (!prev || prev->value < b->value)
+				prev = b;
 		}
 		b = b->next;
 	}
 	return (prev);
 }
 
-int	calculate_cost(t_stack *a, t_stack *b, int value)
+int	calc_cost(t_stack **a, t_stack *current)
 {
-	int		cost_a = 0, cost_b;
-	t_stack	*pred;
+	int	cost;
+        int     index;
+        int     size;
 
-	cost_a = 0, cost_b = 0;
-	pred = find_predecessor(b, value);
-	// Calcular o custo de mover o elemento em 'a' para o topo
-	while (a != NULL && a->value != value)
-	{
-		cost_a++;
-		a = a->next;
-	}
-	// Calcular o custo de mover o antecessor em 'b' para o topo
-	if (pred != NULL)
-	{
-		while (b != NULL && b->value != pred->value)
-		{
-			cost_b++;
-			b = b->next;
-		}
-	}
-	else
-	{
-		// Se não houver antecessor, mover o maior elemento em 'b' para o topo
-		while (b != NULL)
-		{
-			cost_b++;
-			b = b->next;
-		}
-	}
-	return (cost_a + cost_b);
+        index = ft_lstgetindex(a, current);
+        size = ft_lstsize(*a);
+        if (size % 2 != 0)
+                size++;
+        if ((index + 1) <= (size / 2))
+                cost = index;
+        else
+        {
+                if (size % 2 == 0)
+                        cost = size - index;  
+                else
+                        cost = size - index + 1;  
+        }
+        return (cost);
 }
 
 void	sort_stack(t_stack **a, t_stack **b)
 {
 	t_stack	*min_node;
 	t_stack	*current;
-        t_stack	*temp;
+	t_stack	*temp;
 	int		len_stack;
 	int		tr;
 	int		fal;
@@ -163,8 +165,6 @@ void	sort_stack(t_stack **a, t_stack **b)
 			}
 			tr = len_stack - (min_node->index + 1);
 			fal = tr - len_stack / 2;
-			printf("Antecessor: %d\n", find_predecessor(*a,
-					(*a)->value)->value);
 			if (fal >= 0)
 			{
 				while (*a != min_node)
@@ -192,7 +192,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 		printf("pb\n");
 		pb(a, b);
 		printf("pb\n");
-                temp = *a;
+		temp = *a;
 		while (temp != NULL)
 		{
 			len_stack = ft_lstsize(*a);
@@ -204,16 +204,17 @@ void	sort_stack(t_stack **a, t_stack **b)
 			current = *a;
 			tr = len_stack - (current->index + 1);
 			fal = tr - len_stack / 2;
-                        if (find_predecessor(*b, temp->value))
-                        {
-                                printf("Antecessor: %d\n", find_predecessor(*b,
-					temp->value)->value);
-                        }
-                        else
-                                printf("Sem antecessor\n");
-			
+                        t_stack *preces = find_predecessor(*b, temp->value);
+			if (preces)
+			{
+				printf("Antecessor: %d\n", preces->value);
+                                printf ("Custo a: %d\n", calc_cost(a, temp));
+                                printf ("Custo b: %d\n", calc_cost(b, preces));
+			}
+			else
+				printf("Sem antecessor\n");
 			// ft_lstprint(*a);
-                        temp = temp->next;
+			temp = temp->next;
 		}
 	}
 	while (*b != NULL)
