@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/24 20:35:30 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/24 20:45:13 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,23 @@ int	calc_cost(t_stack **a, t_stack *current)
         return (cost);
 }
 
+int	check_mov(t_stack **a, t_stack *value)
+{
+	int	local;
+        int     index;
+        int     size;
+
+        index = ft_lstgetindex(a, value);
+        size = ft_lstsize(*a);
+        if (size % 2 != 0)
+                size++;
+        if ((index + 1) <= (size / 2))
+                local = 0;
+        else
+                local = 1;
+        return (local);
+}
+
 void	sort_stack(t_stack **a, t_stack **b)
 {
 	t_stack	*min_node;
@@ -208,8 +225,10 @@ void	sort_stack(t_stack **a, t_stack **b)
 			if (preces)
 			{
 				printf("Antecessor: %d\n", preces->value);
-                                printf ("Custo a: %d\n", calc_cost(a, temp));
-                                printf ("Custo b: %d\n", calc_cost(b, preces));
+                                printf ("Local A: %d\n", check_mov(a, temp));
+                                printf ("Custo A: %d\n", calc_cost(a, temp));
+                                printf ("Local B: %d\n", check_mov(b, preces));
+                                printf ("Custo B: %d\n", calc_cost(b, preces));
 			}
 			else
 				printf("Sem antecessor\n");
