@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/24 13:55:11 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/25 09:33:34 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct t_stack
 	struct t_stack	*previous;
 	struct t_stack	*next;
 }					t_stack;
-int					partition(t_stack **a, int low, int high);
+int					check_diretion(t_stack **a, t_stack *value_a, t_stack **b,
+						t_stack *value_b);
 void				quicksort(t_stack **a, int low, int high);
 t_stack				*ft_lstget_at(t_stack *head, int index);
 void				swap_nodes(t_stack **head, t_stack *node1, t_stack *node2);
