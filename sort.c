@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/25 13:01:21 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/25 15:58:56 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ t_stack	*find_predecessor(t_stack *b, int value)
 	t_stack	*node;
 
 	prev = NULL;
-        node = b;
+	node = b;
 	while (node != NULL)
 	{
 		if (node->value < value)
@@ -138,7 +138,7 @@ t_stack	*find_successor(t_stack *a, int value)
 	t_stack	*node;
 
 	suces = NULL;
-        node = a;
+	node = a;
 	while (node != NULL)
 	{
 		if (node->value > value)
@@ -161,17 +161,11 @@ int	calc_cost(t_stack **stack, t_stack *current)
 
 	index = ft_lstgetindex(stack, current);
 	size = ft_lstsize(*stack);
-	if (size % 2 != 0)
-		size++;
-	if ((index + 1) <= (size / 2))
-		cost = index;
-	else
-	{
-		if (size % 2 == 0)
-			cost = size - index;
-		else
-			cost = size - index + 1;
-	}
+	
+        if (index < size / 2)
+                cost = index;
+        else
+                cost = size - index;
 	return (cost);
 }
 
@@ -179,7 +173,7 @@ int	total_cost(t_stack **a, t_stack *value_a, t_stack **b, t_stack *value_b)
 {
 	int	cost;
 
-	if (check_diretion(a, value_a, b, value_b) && calc_cost(a,
+	if (check_diretion(a, value_a, b, value_b) == 1 && calc_cost(a,
 			value_a) == calc_cost(b, value_b))
 		cost = calc_cost(a, value_a);
 	else
@@ -195,9 +189,9 @@ int	check_mov(t_stack **a, t_stack *value)
 
 	index = ft_lstgetindex(a, value);
 	size = ft_lstsize(*a);
-	if (size % 2 != 0)
-		size++;
-	if ((index + 1) <= (size / 2))
+	// if (size % 2 != 0)
+	// 	size++;
+	if ((index) < (size / 2))
 		local = 0;
 	else
 		local = 1;
@@ -207,8 +201,8 @@ int	check_mov(t_stack **a, t_stack *value)
 int	check_diretion(t_stack **a, t_stack *value_a, t_stack **b, t_stack *value_b)
 {
 	if (check_mov(a, value_a) == check_mov(b, value_b))
-                return (1);
-        return (0);
+		return (1);
+	return (0);
 }
 
 void	sort_stack(t_stack **a, t_stack **b)
@@ -220,8 +214,9 @@ void	sort_stack(t_stack **a, t_stack **b)
 	int		tr;
 	int		fal;
 	t_stack	*preces;
-	t_stack	*right = NULL;
+	t_stack	*right;
 
+	right = NULL;
 	if (ft_lstsize(*a) <= 5)
 	{
 		while (*a != NULL)
@@ -272,6 +267,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 		temp = *a;
 		while (temp != NULL)
 		{
+                        right = NULL;
 			len_stack = ft_lstsize(*a);
 			if (len_stack <= 3)
 			{
@@ -282,30 +278,25 @@ void	sort_stack(t_stack **a, t_stack **b)
 			while (current != NULL)
 			{
 				preces = find_predecessor(*b, current->value);
-                                printf("=================\n");
-                                if (!right)
-                                {
-                                        printf("EntroA");
-                                        // printf("EntroA %d \n", current->value);
-                                        right = current;
-                                }
-				else if (total_cost(a, right, b, find_predecessor(*b, right->value)) > total_cost(a,
-						current, b, preces))
-                                {
-                                        // printf("EntroB");
-                                        // printf("EntroB %d \n", current->value);
-                                        // right = current;
-                                }
-                                printf("NEXT");
+				if (right == NULL)
+				{
+					right = current;
+				}
+				else if (total_cost(a, right, b, find_predecessor(*b,
+							right->value)) > total_cost(a, current, b, preces))
+				{
+					right = current;
+				}
 				current = current->next;
 			}
 			preces = find_predecessor(*b, right->value);
-			if (check_diretion(a, right, b, preces) && calc_cost(a,
+			if (check_diretion(a, right, b, preces) == 1 && calc_cost(a,
 					right) == calc_cost(b, preces))
 			{
 				if (check_mov(a, right) == 0)
 				{
-					while (right->index != 0)
+                                        int     count = calc_cost(a, right);
+					while (count--)
 					{
 						rr(a, b);
 						printf("rr\n");
@@ -315,7 +306,8 @@ void	sort_stack(t_stack **a, t_stack **b)
 				}
 				else
 				{
-					while (right->index != 0)
+                                        int     count = calc_cost(a, right);
+					while (count--)
 					{
 						rrr(a, b);
 						printf("rrr\n");
@@ -326,9 +318,28 @@ void	sort_stack(t_stack **a, t_stack **b)
 			}
 			else
 			{
+                                if (check_mov(b, preces) == 0)
+				{
+					int     count = calc_cost(b, preces);
+					while (count--)
+					{
+						rb(b);
+						printf("rb\n");
+					}
+				}
+				else
+				{
+					int     count = calc_cost(b, preces);
+					while (count--)
+					{
+						rrb(b);
+						printf("rrb\n");
+					}
+				}
 				if (check_mov(a, right) == 0)
 				{
-					while (right->index != 0)
+					int     count = calc_cost(a, right);
+					while (count--)
 					{
 						ra(a);
 						printf("ra\n");
@@ -338,56 +349,51 @@ void	sort_stack(t_stack **a, t_stack **b)
 				}
 				else
 				{
-					while (right->index != 0)
+					int     count = calc_cost(a, right);
+					while (count > 0)
 					{
 						rra(a);
 						printf("rra\n");
+                                                count--;
 					}
-				}
-				if (check_mov(b, preces) == 0)
-				{
-					while (preces->index != 0)
-					{
-						rb(b);
-						printf("rb\n");
-					}
-					pb(a, b);
-					printf("pb\n");
-				}
-				else
-				{
-					while (preces->index != 0)
-					{
-						rrb(b);
-						printf("rrb\n");
-					}
-					pb(a, b);
+                                        pb(a, b);
 					printf("pb\n");
 				}
 			}
-			temp = temp->next;
+			temp = *a;
 		}
 	}
+        // printf("\nB\n");
+        // ft_lstprint(*b);
+        // printf("\nA\n");
+        // ft_lstprint(*a);
 	temp = *b;
 	while (temp != NULL)
 	{
-		len_stack = ft_lstsize(*b);
+                right = NULL;
 		current = temp;
 		while (current != NULL)
 		{
 			preces = find_successor(*a, current->value);
-			if (!right || total_cost(b, right, a, preces) > total_cost(b,
-					current, a, preces))
+			if (right == NULL)
+			{
 				right = current;
+			}
+			else if (total_cost(b, right, a, find_successor(*a,
+						right->value)) > total_cost(b, current, a, preces))
+			{
+				right = current;
+			}
 			current = current->next;
 		}
 		preces = find_successor(*a, right->value);
-		if (check_diretion(b, right, a, preces) && calc_cost(b,
+		if (check_diretion(b, right, a, preces) == 1 && calc_cost(b,
 				right) == calc_cost(a, preces))
 		{
 			if (check_mov(b, right) == 0)
 			{
-				while (right->index != 0)
+				int     count = calc_cost(b, right);
+				while (count--)
 				{
 					rr(a, b);
 					printf("rr\n");
@@ -397,7 +403,8 @@ void	sort_stack(t_stack **a, t_stack **b)
 			}
 			else
 			{
-				while (right->index != 0)
+				int     count = calc_cost(b, right);
+				while (count--)
 				{
 					rrr(a, b);
 					printf("rrr\n");
@@ -408,9 +415,28 @@ void	sort_stack(t_stack **a, t_stack **b)
 		}
 		else
 		{
+                        if (check_mov(a, preces) == 0)
+			{
+				int     count = calc_cost(a, preces);
+				while (count--)
+				{
+					ra(a);
+					printf("ra\n");
+				}
+			}
+			else
+			{
+				int     count = calc_cost(a, preces);
+				while (count--)
+				{
+					rra(a);
+					printf("rra\n");
+				}
+			}
 			if (check_mov(b, right) == 0)
 			{
-				while (right->index != 0)
+				int     count = calc_cost(b, right);
+				while (count--)
 				{
 					rb(b);
 					printf("rb\n");
@@ -420,35 +446,35 @@ void	sort_stack(t_stack **a, t_stack **b)
 			}
 			else
 			{
-				while (right->index != 0)
+				int     count = calc_cost(b, right);
+				while (count--)
 				{
 					rrb(b);
 					printf("rrb\n");
 				}
-			}
-			if (check_mov(a, preces) == 0)
-			{
-				while (preces->index != 0)
-				{
-					ra(a);
-					printf("ra\n");
-				}
-				pa(a, b);
-				printf("pa\n");
-			}
-			else
-			{
-				while (preces->index != 0)
-				{
-					rra(a);
-					printf("rra\n");
-				}
-				pa(a, b);
+                                pa(a, b);
 				printf("pa\n");
 			}
 		}
-		temp = temp->next;
+		temp = *b;
 	}
+        min_node = ft_lstmin(*a);
+        if (check_mov(a, min_node) == 0)
+        {
+                while (*a != min_node)
+                {
+                        ra(a);
+                        printf("ra\n");
+                }
+        }
+        else
+        {
+                while (*a != min_node)
+                {
+                        rra(a);
+                        printf("rra\n");
+                }
+        }       
 }
 
 void	add_to_stack(t_stack **a, int value)
