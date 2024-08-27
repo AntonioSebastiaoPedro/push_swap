@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/26 17:43:56 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:43:30 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,8 @@ void	sort_stack(t_stack **a, t_stack **b)
 				}
 			}
 			pb(a, b);
+                        ft_lstupdateindx(*a);
+                        ft_lstupdateindx(*b);
 			printf("pb\n");
 			// ft_lstprint(*a);
 		}
@@ -264,6 +266,8 @@ void	sort_stack(t_stack **a, t_stack **b)
 		pb(a, b);
 		printf("pb\n");
 	}
+        ft_lstupdateindx(*a);
+        ft_lstupdateindx(*b);
         sort_small_stack(a);
 	temp = *b;
 	while (temp != NULL)
@@ -286,7 +290,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 			current = current->next;
 		}
                 preces = find_successor(*a, right->value);
-		if (check_diretion(b, right, a, preces) == 1)
+		if (check_diretion(a, preces, b, right) == 1)
 		{
 			if (check_mov(b, right) == 0)
 			{
@@ -323,6 +327,8 @@ void	sort_stack(t_stack **a, t_stack **b)
 					}
 				}
 				pa(a, b);
+                                ft_lstupdateindx(*a);
+                                // ft_lstupdateindx(*b);
 				printf("pa\n");
 			}
 			else
@@ -360,27 +366,36 @@ void	sort_stack(t_stack **a, t_stack **b)
 					}
 				}
 				pa(a, b);
+                                ft_lstupdateindx(*a);
+                                ft_lstupdateindx(*b);
 				printf("pa\n");
 			}
+                        printf("Iteracao\n\n");
+                        printf("A\n");
+                        ft_lstprint(*a);
+                        printf("B\n");
+                        ft_lstprint(*b);
 		}
 		else
 		{
 			if (check_mov(a, preces) == 0)
 			{
 				count = calc_cost(a, preces);
-				while (count--)
+				while (count)
 				{
 					ra(a);
 					printf("ra\n");
+                                        count--;
 				}
 			}
 			else
 			{
 				count = calc_cost(a, preces);
-				while (count--)
+				while (count)
 				{
 					rra(a);
 					printf("rra\n");
+                                        count--;
 				}
 			}
 			if (check_mov(b, right) == 0)
@@ -392,6 +407,8 @@ void	sort_stack(t_stack **a, t_stack **b)
 					printf("rb\n");
 				}
 				pa(a, b);
+                                ft_lstupdateindx(*a);
+                                ft_lstupdateindx(*b);
 				printf("pa\n");
 			}
 			else
@@ -403,8 +420,15 @@ void	sort_stack(t_stack **a, t_stack **b)
 					printf("rrb\n");
 				}
 				pa(a, b);
+                                ft_lstupdateindx(*a);
+                                ft_lstupdateindx(*b);
 				printf("pa\n");
 			}
+                        printf("Iteracao\n\n");
+                        printf("A\n");
+                        ft_lstprint(*a);
+                        printf("B\n");
+                        ft_lstprint(*b);
 		}
 		temp = *b;
 	}

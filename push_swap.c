@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/26 18:12:40 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:49:52 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	main(int argc, char *argv[])
 		add_to_stack(&a, atoi(argv[i]));
                 i++;
 	}
-        // printf("Antes A:\n");
-        // ft_lstprint(a);
+        printf("Antes A:\n");
+        ft_lstprint(a);
         sort_stack(&a, &b);
-        // printf("\nDepois:\n");
-        // ft_lstprint(a);
-        // printf("\n=========Verificao: %d============\n", is_sorted(a));
+        printf("\nDepois:\n");
+        ft_lstprint(a);
+        printf("\n=========Verificao: %d============\n", is_sorted(a));
 
         return (0);
 }
