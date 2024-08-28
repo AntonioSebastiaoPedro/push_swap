@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstlastprev.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:29:01 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/27 19:11:09 by ansebast         ###   ########.fr       */
+/*   Created: 2024/08/28 10:02:00 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/28 10:11:30 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_stack *node)
+t_stack	*ft_lstlastprev(t_stack *head)
 {
-	if (!node)
-		return ;
-	if (node->next != NULL)
-		node->next = node;
-	free(node);
+	t_stack *curr;
+
+	if (head == NULL || head->next == NULL)
+		return (NULL);
+	curr = head;
+	while (curr->next->next)
+		curr = curr->next;
+	return (curr);
 }

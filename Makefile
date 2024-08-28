@@ -6,7 +6,7 @@
 #    By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 11:32:47 by ansebast          #+#    #+#              #
-#    Updated: 2024/08/23 21:33:28 by ansebast         ###   ########.fr        #
+#    Updated: 2024/08/28 10:14:22 by ansebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ LIBFT_A = libft.a
 
 SRC = push_swap.c push.c reverse_rotate.c rotate.c swap.c validation.c sort.c \
       ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
-      ft_lstlast.c ft_lstmin.c ft_lstnew.c ft_lstsize.c ft_lstprint.c ft_lstindex.c
+      ft_lstlast.c ft_lstmin.c ft_lstnew.c ft_lstsize.c ft_lstprint.c ft_lstindex.c \
+      ft_lstlastprev.c
 
 OBJ = $(SRC:.c=.o)
 

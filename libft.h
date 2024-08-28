@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/26 12:37:37 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:58:43 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,11 @@ typedef struct t_stack
 {
 	int				value;
 	int				index;
-	struct t_stack	*previous;
 	struct t_stack	*next;
 }					t_stack;
 int					check_diretion(t_stack **a, t_stack *value_a, t_stack **b,
 						t_stack *value_b);
 int					is_sorted(t_stack *stack);
-void				quicksort(t_stack **a, int low, int high);
-t_stack				*ft_lstget_at(t_stack *head, int index);
 void				swap_nodes(t_stack **head, t_stack *node1, t_stack *node2);
 void				ft_lstadd_front(t_stack **head, t_stack *new_node);
 void				ft_lstiter(t_stack *head, void (*f)(int));
@@ -55,5 +52,6 @@ int					ft_lstsize(t_stack *lst);
 t_stack				*ft_lstnew(int content);
 t_stack				*ft_lstmin(t_stack *head);
 t_stack				*ft_lstlast(t_stack *head);
+t_stack				*ft_lstlastprev(t_stack *head);
 
 #endif

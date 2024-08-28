@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:12:54 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/27 16:43:22 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/28 10:13:22 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,30 @@
 void	rra(t_stack **a)
 {
 	t_stack	*last;
+        t_stack	*last_prev;
 
 	if (*a == NULL || (*a)->next == NULL)
-	{
 		return ;
-	}
 	last = ft_lstlast(*a);
-	last->previous->next = NULL;
-	last->previous = NULL;       
+        last_prev = ft_lstlastprev(*a);
 	last->next = *a;            
-	(*a)->previous = last;      
-	*a = last;                  
-	ft_lstupdateindx(*a);       
+	*a = last;
+        last_prev->next = NULL;
+	ft_lstupdateindx(*a);
 }
 
 void	rrb(t_stack **b)
 {
 	t_stack	*last;
+        t_stack	*last_prev;
 
 	if (*b == NULL || (*b)->next == NULL)
-	{
 		return ;
-	}
 	last = ft_lstlast(*b);
-	last->previous->next = NULL;
-	last->previous = NULL;
+        last_prev = ft_lstlastprev(*b);
 	last->next = *b;
 	*b = last;
-	(*b)->next->previous = *b;
+        last_prev->next = NULL;
 	ft_lstupdateindx(*b);
 }
 

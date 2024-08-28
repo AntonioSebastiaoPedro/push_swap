@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:28:49 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/22 18:23:42 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/27 19:09:58 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_lstadd_front(t_stack **head, t_stack *new_node)
 
 	if (head && new_node)
 	{
-		(*head)->previous = new_node;
 		current = new_node->next;
 		while (current != NULL)
 		{

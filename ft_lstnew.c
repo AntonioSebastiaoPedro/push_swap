@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:29:28 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/22 16:59:22 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/27 19:09:25 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_stack	*ft_lstnew(int value)
 	}
 	new_node->value = value;
 	new_node->index = 0;
-	new_node->previous = NULL;
 	new_node->next = NULL;
 	return (new_node);
 }

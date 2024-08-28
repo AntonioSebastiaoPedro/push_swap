@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/27 17:43:30 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:52:07 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,27 +111,6 @@ void	sort_small_stack(t_stack **a)
 	}
 }
 
-t_stack	*find_predecessor(t_stack *b, int value)
-{
-	t_stack	*prev;
-	t_stack	*node;
-
-	prev = NULL;
-	node = b;
-	while (node != NULL)
-	{
-		if (node->value < value)
-		{
-			if (!prev || prev->value < node->value)
-				prev = node;
-		}
-		node = node->next;
-	}
-	if (prev == NULL)
-		prev = ft_lstmax(b);
-	return (prev);
-}
-
 t_stack	*find_successor(t_stack *a, int value)
 {
 	t_stack	*suces;
@@ -207,9 +186,6 @@ void	sort_stack(t_stack **a, t_stack **b)
 	t_stack	*min_node;
 	t_stack	*current;
 	t_stack	*temp;
-	int		len_stack;
-	int		tr;
-	int		fal;
 	t_stack	*preces;
 	t_stack	*right;
 	int		cost_a;
@@ -217,57 +193,13 @@ void	sort_stack(t_stack **a, t_stack **b)
 	int		count;
 
 	right = NULL;
-	if (ft_lstsize(*a) <= 5)
-	{
-		while (*a != NULL)
-		{
-			len_stack = ft_lstsize(*a);
-			if (len_stack <= 3)
-			{
-				sort_small_stack(a);
-				break ;
-			}
-			current = *a;
-			min_node = *a;
-			while (current != NULL)
-			{
-				if (current->value < min_node->value)
-					min_node = current;
-				current = current->next;
-			}
-			tr = len_stack - (min_node->index + 1);
-			fal = tr - len_stack / 2;
-			if (fal >= 0)
-			{
-				while (*a != min_node)
-				{
-					ra(a);
-					printf("ra\n");
-				}
-			}
-			else
-			{
-				while (*a != min_node)
-				{
-					rra(a);
-					printf("rra\n");
-				}
-			}
-			pb(a, b);
-                        ft_lstupdateindx(*a);
-                        ft_lstupdateindx(*b);
-			printf("pb\n");
-			// ft_lstprint(*a);
-		}
-	}
+	
 	
 	while (ft_lstsize(*a) > 3)
 	{
 		pb(a, b);
 		printf("pb\n");
 	}
-        ft_lstupdateindx(*a);
-        ft_lstupdateindx(*b);
         sort_small_stack(a);
 	temp = *b;
 	while (temp != NULL)
@@ -283,7 +215,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 			}
 			else if (total_cost(a, find_successor(*a, right->value), b, right)
                                                 >
-                                total_cost(a, preces, b, right))
+                                total_cost(a, preces, b, current))
 			{
 				right = current;
 			}
@@ -327,8 +259,6 @@ void	sort_stack(t_stack **a, t_stack **b)
 					}
 				}
 				pa(a, b);
-                                ft_lstupdateindx(*a);
-                                // ft_lstupdateindx(*b);
 				printf("pa\n");
 			}
 			else
@@ -366,15 +296,8 @@ void	sort_stack(t_stack **a, t_stack **b)
 					}
 				}
 				pa(a, b);
-                                ft_lstupdateindx(*a);
-                                ft_lstupdateindx(*b);
 				printf("pa\n");
 			}
-                        printf("Iteracao\n\n");
-                        printf("A\n");
-                        ft_lstprint(*a);
-                        printf("B\n");
-                        ft_lstprint(*b);
 		}
 		else
 		{
@@ -407,8 +330,6 @@ void	sort_stack(t_stack **a, t_stack **b)
 					printf("rb\n");
 				}
 				pa(a, b);
-                                ft_lstupdateindx(*a);
-                                ft_lstupdateindx(*b);
 				printf("pa\n");
 			}
 			else
@@ -420,15 +341,8 @@ void	sort_stack(t_stack **a, t_stack **b)
 					printf("rrb\n");
 				}
 				pa(a, b);
-                                ft_lstupdateindx(*a);
-                                ft_lstupdateindx(*b);
 				printf("pa\n");
 			}
-                        printf("Iteracao\n\n");
-                        printf("A\n");
-                        ft_lstprint(*a);
-                        printf("B\n");
-                        ft_lstprint(*b);
 		}
 		temp = *b;
 	}

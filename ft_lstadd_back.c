@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:28:43 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/27 14:18:26 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/27 19:09:50 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_lstadd_back(t_stack **head, t_stack *new_node)
 	{
 		last = ft_lstlast(*head);
 		last->next = new_node;
-		new_node->previous = last;
 		new_node->index = last->index + 1;
 		new_node->next = NULL;
 	}
