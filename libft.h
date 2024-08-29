@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/28 21:58:43 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 08:56:53 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@ typedef struct t_stack
 }					t_stack;
 int					check_diretion(t_stack **a, t_stack *value_a, t_stack **b,
 						t_stack *value_b);
+int					check_mov(t_stack **a, t_stack *value);
 int					is_sorted(t_stack *stack);
-void				swap_nodes(t_stack **head, t_stack *node1, t_stack *node2);
-void				ft_lstadd_front(t_stack **head, t_stack *new_node);
-void				ft_lstiter(t_stack *head, void (*f)(int));
+int					ft_lstsize(t_stack *lst);
+int					ft_lstgetindex(t_stack **head, t_stack *value);
+int					calc_cost(t_stack **stack, t_stack *current);
+int					total_cost(t_stack **a, t_stack *value_a, t_stack **b,
+						t_stack *value_b);
 void				ft_lstdelone(t_stack *node);
 void				ft_lstclear(t_stack **head);
 void				ft_lstprint(t_stack *head);
+void				sort_small_stack(t_stack **a);
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);
 void				ra(t_stack **a);
@@ -46,12 +50,15 @@ void				sb(t_stack **b);
 void				ss(t_stack **a, t_stack **b);
 void				sort_stack(t_stack **a, t_stack **b);
 void				add_to_stack(t_stack **a, int value);
+void				ft_putstr(char *s);
+void				sort_min(t_stack **a);
+void				calculate_and_rotate_a(t_stack **a, t_stack *succesor);
 void				ft_lstupdateindx(t_stack *head);
 void				ft_lstadd_back(t_stack **head, t_stack *new_node);
-int					ft_lstsize(t_stack *lst);
 t_stack				*ft_lstnew(int content);
 t_stack				*ft_lstmin(t_stack *head);
 t_stack				*ft_lstlast(t_stack *head);
 t_stack				*ft_lstlastprev(t_stack *head);
+t_stack				*find_successor(t_stack *a, int value);
 
 #endif

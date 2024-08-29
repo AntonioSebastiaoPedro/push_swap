@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstgetindex.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:29:07 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/22 16:52:57 by ansebast         ###   ########.fr       */
+/*   Created: 2024/08/29 05:50:44 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/29 05:50:46 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_stack *head, void (*f)(int))
+int	ft_lstgetindex(t_stack **head, t_stack *value)
 {
-	while (head)
+	t_stack	*current;
+
+	current = *head;
+	while (current != NULL)
 	{
-		f(head->value);
-		head = head->next;
+		if (current == value)
+			return (value->index);
+		current = current->next;
 	}
+	return (-1);
 }

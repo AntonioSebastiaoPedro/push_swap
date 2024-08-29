@@ -6,7 +6,7 @@
 #    By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 11:32:47 by ansebast          #+#    #+#              #
-#    Updated: 2024/08/28 10:14:22 by ansebast         ###   ########.fr        #
+#    Updated: 2024/08/29 08:32:22 by ansebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,10 @@ NAME = push_swap
 LIBFT_A = libft.a
 
 SRC = push_swap.c push.c reverse_rotate.c rotate.c swap.c validation.c sort.c \
-      ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
+      ft_lstadd_back.c ft_lstclear.c ft_lstdelone.c sort_small_stack.c ft_lstupdateindx.c \
       ft_lstlast.c ft_lstmin.c ft_lstnew.c ft_lstsize.c ft_lstprint.c ft_lstindex.c \
-      ft_lstlastprev.c
+      ft_lstlastprev.c calc_cost.c check_diretion.c find_successor.c ft_putstr.c ft_lstmax.c \
+      ft_lstgetindex.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -53,7 +54,3 @@ fclean: clean
 	rm -f $(NAME) $(LIBFT_A)
 
 re: fclean all
-
-run: ./push_swap
-
-.PHONY: all clean fclean re
