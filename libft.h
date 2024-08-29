@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 08:56:53 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 09:09:09 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void				sort_stack(t_stack **a, t_stack **b);
 void				add_to_stack(t_stack **a, int value);
 void				ft_putstr(char *s);
 void				sort_min(t_stack **a);
-void				calculate_and_rotate_a(t_stack **a, t_stack *succesor);
+void				calc_rotate_succesor(t_stack **a, t_stack *succesor);
+void				calc_rotate_right(t_stack **b, t_stack **a, t_stack *right);
 void				ft_lstupdateindx(t_stack *head);
 void				ft_lstadd_back(t_stack **head, t_stack *new_node);
 t_stack				*ft_lstnew(int content);
@@ -60,5 +61,6 @@ t_stack				*ft_lstmin(t_stack *head);
 t_stack				*ft_lstlast(t_stack *head);
 t_stack				*ft_lstlastprev(t_stack *head);
 t_stack				*find_successor(t_stack *a, int value);
+t_stack				*get_right(t_stack **a, t_stack **b, t_stack *head);
 
 #endif

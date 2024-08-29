@@ -6,21 +6,44 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 08:56:26 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 09:09:21 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	sort_stack(t_stack **a, t_stack **b)
+t_stack	*get_right(t_stack **a, t_stack **b, t_stack *head)
 {
 	t_stack	*current;
+	t_stack	*succesor;
+	t_stack	*right;
+
+	current = head;
+	right = NULL;
+	while (current != NULL)
+	{
+		succesor = find_successor(*a, current->value);
+		if (right == NULL)
+		{
+			right = current;
+		}
+		else if (total_cost(a, find_successor(*a, right->value), b,
+				right) > total_cost(a, succesor, b, current))
+		{
+			right = current;
+		}
+		current = current->next;
+	}
+	return (right);
+}
+
+void	sort_stack(t_stack **a, t_stack **b)
+{
 	t_stack	*temp;
 	t_stack	*preces;
 	t_stack	*right;
 	int		cost_a;
 	int		cost_b;
-	int		count;
 
 	while (ft_lstsize(*a) > 3)
 	{
@@ -31,22 +54,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 	temp = *b;
 	while (temp != NULL)
 	{
-		right = NULL;
-		current = temp;
-		while (current != NULL)
-		{
-			preces = find_successor(*a, current->value);
-			if (right == NULL)
-			{
-				right = current;
-			}
-			else if (total_cost(a, find_successor(*a, right->value), b,
-					right) > total_cost(a, preces, b, current))
-			{
-				right = current;
-			}
-			current = current->next;
-		}
+		right = get_right(a, b, temp);
 		preces = find_successor(*a, right->value);
 		if (check_diretion(a, preces, b, right) == 1)
 		{
@@ -127,36 +135,43 @@ void	sort_stack(t_stack **a, t_stack **b)
 		}
 		else
 		{
-                        calculate_and_rotate_a(a, preces);
-			if (check_mov(b, right) == 0)
-			{
-				count = calc_cost(b, right);
-				while (count--)
-				{
-					rb(b);
-					printf("rb\n");
-				}
-				pa(a, b);
-				printf("pa\n");
-			}
-			else
-			{
-				count = calc_cost(b, right);
-				while (count--)
-				{
-					rrb(b);
-					printf("rrb\n");
-				}
-				pa(a, b);
-				printf("pa\n");
-			}
+			calc_rotate_succesor(a, preces);
+			calc_rotate_right(b, a, right);
 		}
 		temp = *b;
 	}
 	sort_min(a);
 }
 
-void	calculate_and_rotate_a(t_stack **a, t_stack *succesor)
+void	calc_rotate_right(t_stack **b, t_stack **a, t_stack *right)
+{
+	int	count;
+
+	if (check_mov(b, right) == 0)
+	{
+		count = calc_cost(b, right);
+		while (count--)
+		{
+			rb(b);
+			printf("rb\n");
+		}
+		pa(a, b);
+		printf("pa\n");
+	}
+	else
+	{
+		count = calc_cost(b, right);
+		while (count--)
+		{
+			rrb(b);
+			printf("rrb\n");
+		}
+		pa(a, b);
+		printf("pa\n");
+	}
+}
+
+void	calc_rotate_succesor(t_stack **a, t_stack *succesor)
 {
 	int	count;
 
