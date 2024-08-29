@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 09:09:21 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 09:31:10 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,58 @@ t_stack	*get_right(t_stack **a, t_stack **b, t_stack *head)
 	return (right);
 }
 
+void	rotate_successor_right(int cost_a, t_stack **a, t_stack *successor, int cost_b,
+		t_stack **b, t_stack *right)
+{
+	cost_a = calc_cost(a, successor);
+	cost_b = calc_cost(b, right);
+	while (cost_a > 0 && cost_b > 0)
+	{
+		rr(a, b);
+		printf("rr\n");
+		cost_a--;
+		cost_b--;
+	}
+	while (cost_a > 0)
+	{
+		ra(a);
+		printf("ra\n");
+		cost_a--;
+	}
+	while (cost_b > 0)
+	{
+		rb(b);
+		printf("rb\n");
+		cost_b--;
+	}
+}
+
+void	rev_rotate_successor_right(int cost_a, t_stack **a, t_stack *successor, int cost_b,
+		t_stack **b, t_stack *right)
+{
+	cost_a = calc_cost(a, successor);
+	cost_b = calc_cost(b, right);
+	while (cost_a > 0 && cost_b > 0)
+	{
+		rrr(a, b);
+		printf("rrr\n");
+		cost_a--;
+		cost_b--;
+	}
+	while (cost_a > 0)
+	{
+		rra(a);
+		printf("rra\n");
+		cost_a--;
+	}
+	while (cost_b > 0)
+	{
+		rrb(b);
+		printf("rrb\n");
+		cost_b--;
+	}
+}
+
 void	sort_stack(t_stack **a, t_stack **b)
 {
 	t_stack	*temp;
@@ -58,77 +110,17 @@ void	sort_stack(t_stack **a, t_stack **b)
 		preces = find_successor(*a, right->value);
 		if (check_diretion(a, preces, b, right) == 1)
 		{
+                        cost_a = 0;
+			cost_b = 0;
 			if (check_mov(b, right) == 0)
 			{
-				cost_a = calc_cost(a, preces);
-				cost_b = calc_cost(b, right);
-				if (cost_a >= cost_b)
-				{
-					while (cost_b)
-					{
-						rr(a, b);
-						printf("rr\n");
-						cost_a--;
-						cost_b--;
-					}
-					while (cost_a--)
-					{
-						ra(a);
-						printf("ra\n");
-					}
-				}
-				else
-				{
-					while (cost_a)
-					{
-						rr(a, b);
-						printf("rr\n");
-						cost_a--;
-						cost_b--;
-					}
-					while (cost_b--)
-					{
-						rb(b);
-						printf("rb\n");
-					}
-				}
+				rotate_successor_right(cost_a, a, preces, cost_b, b, right);
 				pa(a, b);
 				printf("pa\n");
 			}
 			else
 			{
-				cost_a = calc_cost(a, preces);
-				cost_b = calc_cost(b, right);
-				if (cost_a >= cost_b)
-				{
-					while (cost_b)
-					{
-						rrr(a, b);
-						printf("rrr\n");
-						cost_a--;
-						cost_b--;
-					}
-					while (cost_a--)
-					{
-						rra(a);
-						printf("rra\n");
-					}
-				}
-				else
-				{
-					while (cost_a)
-					{
-						rrr(a, b);
-						printf("rrr\n");
-						cost_a--;
-						cost_b--;
-					}
-					while (cost_b--)
-					{
-						rrb(b);
-						printf("rrb\n");
-					}
-				}
+				rev_rotate_successor_right(cost_a, a, preces, cost_b, b, right);
 				pa(a, b);
 				printf("pa\n");
 			}
