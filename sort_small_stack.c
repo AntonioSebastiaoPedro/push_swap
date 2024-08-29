@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 05:53:55 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 05:54:07 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 10:18:20 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sort_small_stack(t_stack **a)
 {
-	t_stack	*first;
-	t_stack	*second;
-	t_stack	*third;
+	t_stack *first;
+	t_stack *second;
+	t_stack *third;
 
 	if (ft_lstsize(*a) == 2)
 	{

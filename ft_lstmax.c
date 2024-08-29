@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 05:51:14 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 05:51:15 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 10:12:55 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_stack	*ft_lstmax(t_stack *head)
 {
-	t_stack	*max_node;
+	t_stack *max_node;
 
 	max_node = head;
 	while (head != NULL)

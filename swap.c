@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 14:56:37 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/28 09:58:13 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 10:18:28 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sa(t_stack **a)
 		return ;
 	first = *a;
 	second = first->next;
-        first->next = second->next;
+	first->next = second->next;
 	second->next = first;
 	*a = second;
 	ft_lstupdateindx(*a);

@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:29:28 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/27 19:09:25 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 10:13:13 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_stack	*ft_lstnew(int value)
 
 	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
-	{
-		printf("Erro ao alocar memória\n");
 		return (NULL);
-	}
 	new_node->value = value;
 	new_node->index = 0;
 	new_node->next = NULL;

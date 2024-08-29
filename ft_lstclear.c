@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:28:54 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/23 07:14:45 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 10:10:20 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_lstclear(t_stack **head)
 	while (current != NULL)
 	{
 		next_node = current->next;
-		ft_lstdelone(current);    
+		ft_lstdelone(current);
 		current = next_node;
 	}
 	*head = NULL;

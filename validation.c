@@ -6,21 +6,11 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 09:14:42 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/26 12:40:41 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/29 10:18:45 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// int	is_sorted(int *arr, int size)
-// {
-// 	for (int i = 1; i < size; i++)
-// 	{
-// 		if (arr[i - 1] > arr[i])
-// 			return (0);
-// 	}
-// 	return (1);
-// }
 
 int	is_sorted(t_stack *stack)
 {
