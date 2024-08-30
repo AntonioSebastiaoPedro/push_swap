@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 16:29:12 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 16:30:19 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/30 17:13:51 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void    ft_puterror()
 {
-        write(1, "Error\n", 6);
+        write(2, "Error\n", 6);
         exit(1);
 }

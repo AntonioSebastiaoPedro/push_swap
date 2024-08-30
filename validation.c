@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 09:14:42 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 17:03:21 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/30 17:30:22 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int	ft_isint(char *str)
 	char	*endptr;
 	long	val;
 
-	if (*str == '\0')
+	if (*str == '\0' || (*str == '-' && *(str + 1) == '\0') || (*str == '+'
+			&& *(str + 1) == '\0'))
 		return (0);
 	val = ft_strtol(str, &endptr);
 	if (*endptr != '\0' || val < -2147483648 || val > 2147483647)
@@ -78,10 +79,10 @@ int	ft_isint(char *str)
 int	validate_arguments(int argc, char **argv)
 {
 	int *numbers;
-        int     i;
-        
+	int i;
+
 	numbers = ft_calloc((argc - 1), sizeof(int));
-        i = 1;
+	i = 1;
 	if (!numbers)
 		return (0);
 
@@ -93,7 +94,7 @@ int	validate_arguments(int argc, char **argv)
 			ft_puterror();
 		}
 		numbers[i - 1] = ft_atoi(argv[i]);
-                i++;
+		i++;
 	}
 	if (has_duplicates(numbers, argc - 1))
 	{
