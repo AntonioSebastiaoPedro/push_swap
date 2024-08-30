@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 15:30:54 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:52:12 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,18 +88,9 @@ void	add_to_stack(t_stack **a, char *val)
 	long value;
 	t_stack *new_node;
 
-        
-        if (!ft_isint(val))
-        {
-                write(1, "Error\n", 6);
-                exit(1);
-        }
 	value = ft_atoi(val);
 	new_node = ft_lstnew(value);
 	if (!new_node)
-	{
-		write(1, "Error\n", 6);
-		exit(1);
-	}
+		ft_puterror();
 	ft_lstadd_back(a, new_node);
 }

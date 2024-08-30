@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 15:30:42 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:42:09 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ int					ft_atoi(const char *str);
 int					check_direction(t_stack **a, t_stack *value_a, t_stack **b,
 						t_stack *value_b);
 int					check_mov(t_stack **a, t_stack *value);
-int					is_sorted(t_stack *stack);
+int					ft_lstissorted(t_stack *stack);
+int					ft_issorted(int *array, int size);
+int					validate_arguments(int argc, char **argv);
 int					ft_lstsize(t_stack *lst);
 int					ft_lstgetindex(t_stack **head, t_stack *value);
 int					calc_cost(t_stack **stack, t_stack *current);
 int					total_cost(t_stack **a, t_stack *value_a, t_stack **b,
 						t_stack *value_b);
+void				ft_puterror(void);
 void				ft_lstdelone(t_stack *node);
 void				*ft_calloc(size_t num, size_t size);
 void				*ft_memcpy(void *dest, const void *src, size_t num);
