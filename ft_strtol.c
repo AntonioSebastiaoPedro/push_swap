@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strtol.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 07:23:46 by ansebast         ###   ########.fr       */
+/*   Created: 2024/08/30 14:27:24 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/30 15:08:27 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(int argc, char *argv[])
+long int	ft_strtol(char *str, char **endptr)
 {
-	t_stack *a;
-	t_stack *b;
-	int i;
+	int	i;
+	long	num;
+	int	signal;
 
-	a = NULL;
-	b = NULL;
-	i = 1;
-	if (argc < 2)
+	signal = 1;
+	num = 0;
+	i = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-')
+		signal = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (ft_isdigit(str[i]))
 	{
-		return (0);
-	}
-        // if (argv[1] == "")
-        // {
-        //         write(1, "Error\n", 6);
-        // }
-        
-	while (i < argc)
-	{
-		add_to_stack(&a, argv[i]);
+		num = num * 10 + str[i] - '0';
 		i++;
 	}
-	sort_stack(&a, &b);
-        // ft_lstprint(a);
-	return (0);
+        *endptr = &str[i];
+        return (num * signal);
 }

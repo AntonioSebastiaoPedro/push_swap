@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 07:23:46 by ansebast         ###   ########.fr       */
+/*   Created: 2024/05/29 11:27:58 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/15 08:48:32 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*ft_calloc(size_t num, size_t size)
 {
-	t_stack *a;
-	t_stack *b;
-	int i;
+	void	*ptr;
 
-	a = NULL;
-	b = NULL;
-	i = 1;
-	if (argc < 2)
-	{
-		return (0);
-	}
-        // if (argv[1] == "")
-        // {
-        //         write(1, "Error\n", 6);
-        // }
-        
-	while (i < argc)
-	{
-		add_to_stack(&a, argv[i]);
-		i++;
-	}
-	sort_stack(&a, &b);
-        // ft_lstprint(a);
-	return (0);
+	if (size && num > 21474836647 / size)
+		return (NULL);
+	ptr = malloc(num * size);
+	if (!ptr)
+		return (NULL);
+	ft_memset(ptr, 0, num * size);
+	return (ptr);
 }

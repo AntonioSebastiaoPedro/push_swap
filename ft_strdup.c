@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 07:23:46 by ansebast         ###   ########.fr       */
+/*   Created: 2024/05/29 11:31:04 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/27 13:37:11 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(int argc, char *argv[])
+char	*ft_strdup(const char *str)
 {
-	t_stack *a;
-	t_stack *b;
-	int i;
+	char	*str2;
+	size_t	size;
 
-	a = NULL;
-	b = NULL;
-	i = 1;
-	if (argc < 2)
-	{
-		return (0);
-	}
-        // if (argv[1] == "")
-        // {
-        //         write(1, "Error\n", 6);
-        // }
-        
-	while (i < argc)
-	{
-		add_to_stack(&a, argv[i]);
-		i++;
-	}
-	sort_stack(&a, &b);
-        // ft_lstprint(a);
-	return (0);
+	size = ft_strlen(str) + 1;
+	str2 = (char *)ft_calloc(1, size);
+	if (!str2)
+		return (NULL);
+	ft_memcpy(str2, str, size);
+	return (str2);
 }

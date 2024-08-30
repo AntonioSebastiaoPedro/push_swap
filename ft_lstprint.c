@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 07:23:46 by ansebast         ###   ########.fr       */
+/*   Created: 2024/08/29 11:09:06 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/29 11:12:03 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(int argc, char *argv[])
+void ft_lstprint(t_stack *head)
 {
-	t_stack *a;
-	t_stack *b;
-	int i;
-
-	a = NULL;
-	b = NULL;
-	i = 1;
-	if (argc < 2)
-	{
-		return (0);
-	}
-        // if (argv[1] == "")
-        // {
-        //         write(1, "Error\n", 6);
-        // }
+        while (head)
+        {
+                printf("%d - Indice[%d]\n", head->value, head->index);
+                head = head->next;
+        }
         
-	while (i < argc)
-	{
-		add_to_stack(&a, argv[i]);
-		i++;
-	}
-	sort_stack(&a, &b);
-        // ft_lstprint(a);
-	return (0);
 }

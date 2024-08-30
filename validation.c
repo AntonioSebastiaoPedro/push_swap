@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 09:14:42 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 10:18:45 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/30 15:30:26 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,32 @@ int	is_sorted(t_stack *stack)
 
 int	has_duplicates(int *arr, int size)
 {
-	for (int i = 0; i < size; i++)
+        int     i;
+        int     j;
+
+        i = 0;
+	while (i < size)
 	{
-		for (int j = i + 1; j < size; j++)
+                j = i + 1;
+		while (j < size)
 		{
 			if (arr[i] == arr[j])
 				return (1);
+                        j++;
 		}
+                i++;
 	}
 	return (0);
 }
 
-int	is_integer(const char *str)
+int	ft_isint(char *str)
 {
 	char	*endptr;
 	long	val;
 
 	if (*str == '\0')
 		return (0);
-	val = strtol(str, &endptr, 10);
+	val = ft_strtol(str, &endptr);
 	if (*endptr != '\0' || val < -2147483648 || val > 2147483647)
 		return (0);
 	return (1);
@@ -74,7 +81,7 @@ int	is_integer(const char *str)
 // 			free(numbers);
 // 			return (0);
 // 		}
-// 		numbers[i - 1] = atoi(argv[i]);
+// 		numbers[i - 1] = ft_atoi(argv[i]);
 // 	}if (is_sorted(numbers, argc - 1) || argc == 2)
 // 	// {
 // 	// 	free(numbers);

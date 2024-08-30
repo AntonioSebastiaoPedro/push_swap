@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 10:15:16 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/30 15:30:42 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ typedef struct t_stack
 	int				index;
 	struct t_stack	*next;
 }					t_stack;
+char				**ft_split(char const *s, char c);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+char				*ft_strdup(const char *str);
+long int			ft_strtol(char *str, char **endptr);
+size_t				ft_strlen(const char *str);
+int					ft_isdigit(int ch);
+int					ft_isint(char *str);
+int					ft_atoi(const char *str);
 int					check_direction(t_stack **a, t_stack *value_a, t_stack **b,
 						t_stack *value_b);
 int					check_mov(t_stack **a, t_stack *value);
@@ -34,8 +42,11 @@ int					calc_cost(t_stack **stack, t_stack *current);
 int					total_cost(t_stack **a, t_stack *value_a, t_stack **b,
 						t_stack *value_b);
 void				ft_lstdelone(t_stack *node);
+void				*ft_calloc(size_t num, size_t size);
+void				*ft_memcpy(void *dest, const void *src, size_t num);
+void				*ft_memset(void *first, int value, size_t num);
 void				ft_lstclear(t_stack **head);
-// void				ft_lstprint(t_stack *head);
+void				ft_lstprint(t_stack *head);
 void				sort_small_stack(t_stack **a);
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);
@@ -49,7 +60,7 @@ void				sa(t_stack **a);
 void				sb(t_stack **b);
 void				ss(t_stack **a, t_stack **b);
 void				sort_stack(t_stack **a, t_stack **b);
-void				add_to_stack(t_stack **a, int value);
+void				add_to_stack(t_stack **a, char *val);
 void				ft_putstr(char *s);
 void				sort_min(t_stack **a);
 void				calc_rotate_succesor(t_stack **a, t_stack *succesor);

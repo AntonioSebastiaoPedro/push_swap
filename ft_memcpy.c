@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 07:23:46 by ansebast         ###   ########.fr       */
+/*   Created: 2024/05/29 11:29:49 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/28 07:33:30 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*ft_memcpy(void *dest, const void *src, size_t num)
 {
-	t_stack *a;
-	t_stack *b;
-	int i;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	a = NULL;
-	b = NULL;
-	i = 1;
-	if (argc < 2)
-	{
-		return (0);
-	}
-        // if (argv[1] == "")
-        // {
-        //         write(1, "Error\n", 6);
-        // }
-        
-	while (i < argc)
-	{
-		add_to_stack(&a, argv[i]);
-		i++;
-	}
-	sort_stack(&a, &b);
-        // ft_lstprint(a);
-	return (0);
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	while (num--)
+		*d++ = *s++;
+	return (dest);
 }
