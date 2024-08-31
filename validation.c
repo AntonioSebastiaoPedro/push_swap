@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 09:14:42 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/31 18:43:08 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/31 18:52:29 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,42 +117,38 @@ void	validate_arguments(int argc, char **argv, t_stack**a)
                 if (ft_isempty(argv[i]))
                 {
                         free(numbers);
-                        free(args);
                         ft_puterror();
                 }
                 args = ft_split(argv[i], ' ');
-                
                 j = 0;
                 while (args[j])
                 {
                         if (!ft_isint(args[j]))
                         {
                                 free(numbers);
-                                free(args);
+                                ft_freearray(args, ft_lentab(args));
                                 ft_puterror();
                         }
                         numbers[k] = ft_atoi(args[j]);
                         k++;
                         j++;                      
                 }
+                ft_freearray(args, ft_lentab(args));
 		i++;
 	}
         if (k == 0 && argc > 1)
         {
                 free(numbers);
-                free(args);
                 ft_puterror(); 
         }
 	if (has_duplicates(numbers, k))
 	{
 		free(numbers);
-                free(args);
 		ft_puterror();
 	}
 	if (ft_issorted(numbers, k))
 	{
 		free(numbers);
-                free(args);
 		exit(0);
 	}
         k--;
@@ -162,6 +158,5 @@ void	validate_arguments(int argc, char **argv, t_stack**a)
                 add_to_stack(a, numbers[i]);
                 i++;
         }
-        free(args);
 	free(numbers);
 }
