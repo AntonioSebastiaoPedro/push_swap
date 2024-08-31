@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 08:02:50 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 10:09:54 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:19:57 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	calc_rotate_right(t_stack **b, t_stack **a, t_stack *right)
 		while (count--)
 		{
 			rb(b);
-			printf("rb\n");
+			ft_putstr("rb\n");
 		}
 		pa(a, b);
-		printf("pa\n");
+		ft_putstr("pa\n");
 	}
 	else
 	{
@@ -60,10 +60,10 @@ void	calc_rotate_right(t_stack **b, t_stack **a, t_stack *right)
 		while (count--)
 		{
 			rrb(b);
-			printf("rrb\n");
+			ft_putstr("rrb\n");
 		}
 		pa(a, b);
-		printf("pa\n");
+		ft_putstr("pa\n");
 	}
 }
 
@@ -77,7 +77,7 @@ void	calc_rotate_succesor(t_stack **a, t_stack *succesor)
 		while (count)
 		{
 			ra(a);
-			printf("ra\n");
+			ft_putstr("ra\n");
 			count--;
 		}
 	}
@@ -87,7 +87,7 @@ void	calc_rotate_succesor(t_stack **a, t_stack *succesor)
 		while (count)
 		{
 			rra(a);
-			printf("rra\n");
+			ft_putstr("rra\n");
 			count--;
 		}
 	}

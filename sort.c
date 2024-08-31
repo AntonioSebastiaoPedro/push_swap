@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/31 18:32:06 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:19:57 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 	while (ft_lstsize(*a) > 3)
 	{
 		pb(a, b);
-		printf("pb\n");
+		ft_putstr("pb\n");
 	}
 	sort_small_stack(a);
 	temp = *b;
@@ -72,7 +72,7 @@ void	sort_min(t_stack **a)
 		while (*a != min_node)
 		{
 			ra(a);
-			printf("ra\n");
+			ft_putstr("ra\n");
 		}
 	}
 	else
@@ -80,7 +80,7 @@ void	sort_min(t_stack **a)
 		while (*a != min_node)
 		{
 			rra(a);
-			printf("rra\n");
+			ft_putstr("rra\n");
 		}
 	}
 }

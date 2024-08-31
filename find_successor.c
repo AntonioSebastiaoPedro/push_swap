@@ -14,8 +14,8 @@
 
 t_stack	*find_successor(t_stack *a, int value)
 {
-	t_stack *suces;
-	t_stack *node;
+	t_stack	*suces;
+	t_stack	*node;
 
 	suces = NULL;
 	node = a;

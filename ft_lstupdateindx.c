@@ -14,8 +14,8 @@
 
 void	ft_lstupdateindx(t_stack *head)
 {
-	int index;
-	t_stack *current;
+	int		index;
+	t_stack	*current;
 
 	index = 0;
 	current = head;

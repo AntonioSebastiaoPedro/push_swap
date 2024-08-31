@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/31 20:37:02 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:14:05 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,13 @@ void				ft_lstupdateindx(t_stack *head);
 void				ft_lstadd_back(t_stack **head, t_stack *new_node);
 void				rotate_direction(t_stack **a, t_stack *successor,
 						t_stack **b, t_stack *right);
-void				rotate_successor_right(int cost_a, t_stack **a,
-						t_stack *successor, int cost_b, t_stack **b,
-						t_stack *right);
-void				rev_rotate_successor_right(int cost_a, t_stack **a,
-						t_stack *successor, int cost_b, t_stack **b,
-						t_stack *right);
+void				rotate_successor_right(t_stack **a, t_stack *successor,
+						t_stack **b, t_stack *right);
+void				rev_rotate_successor_right(t_stack **a, t_stack *successor,
+						t_stack **b, t_stack *right);
 t_stack				*ft_lstnew(int content);
 t_stack				*ft_lstmin(t_stack *head);
+t_stack				*ft_lstmax(t_stack *head);
 t_stack				*ft_lstlast(t_stack *head);
 t_stack				*ft_lstlastprev(t_stack *head);
 t_stack				*find_successor(t_stack *a, int value);
