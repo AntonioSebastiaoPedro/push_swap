@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterror.c                                      :+:      :+:    :+:   */
+/*   ft_freearay.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/30 16:29:12 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/31 16:47:34 by ansebast         ###   ########.fr       */
+/*   Created: 2024/08/31 18:43:56 by ansebast          #+#    #+#             */
+/*   Updated: 2024/08/31 18:44:09 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_puterror()
+void	ft_freearray(char **array, int pos)
 {
-        write(2, "Error\n", 6);
-        exit(255);
+	while (pos > 0)
+		free(array[--pos]);
+	free(array);
 }

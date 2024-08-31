@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:44:26 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 16:54:29 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/31 16:50:00 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,11 @@ int	main(int argc, char *argv[])
 {
 	t_stack *a;
 	t_stack *b;
-	int i;
 
 	a = NULL;
 	b = NULL;
-	i = 1;
-        validate_arguments(argc, argv);
-	while (i < argc)
-	{
-		add_to_stack(&a, argv[i]);
-		i++;
-	}
+        
+        validate_arguments(argc, argv, &a);       
 	sort_stack(&a, &b);
 	return (0);
 }

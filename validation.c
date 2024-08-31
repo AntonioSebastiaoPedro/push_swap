@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 09:14:42 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 17:30:22 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/31 18:43:08 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,16 @@ int	has_duplicates(int *arr, int size)
 	return (0);
 }
 
+int     ft_lentab(char **tab)
+{
+        int     i;
+
+        i = 0;
+        while (tab[i])
+                i++;
+        return (i);
+}
+
 int	ft_isint(char *str)
 {
 	char	*endptr;
@@ -76,36 +86,82 @@ int	ft_isint(char *str)
 	return (1);
 }
 
-int	validate_arguments(int argc, char **argv)
+int     ft_isempty(char *str)
+{
+        int     i;
+
+        i = 0;
+        while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+                i++;
+        return (str[i] == '\0');
+}
+
+void	validate_arguments(int argc, char **argv, t_stack**a)
 {
 	int *numbers;
 	int i;
+        int j;
+        int     k;
+        
+        char **args;
 
-	numbers = ft_calloc((argc - 1), sizeof(int));
-	i = 1;
+        i = 1;
+        k = 0;
+	// numbers = ft_calloc((argc - 1), sizeof(int));
+        numbers = ft_calloc(10000, sizeof(int));
 	if (!numbers)
-		return (0);
-
+		return ;
 	while (i < argc)
 	{
-		if (!ft_isint(argv[i]))
-		{
-			free(numbers);
-			ft_puterror();
-		}
-		numbers[i - 1] = ft_atoi(argv[i]);
+                
+                if (ft_isempty(argv[i]))
+                {
+                        free(numbers);
+                        free(args);
+                        ft_puterror();
+                }
+                args = ft_split(argv[i], ' ');
+                
+                j = 0;
+                while (args[j])
+                {
+                        if (!ft_isint(args[j]))
+                        {
+                                free(numbers);
+                                free(args);
+                                ft_puterror();
+                        }
+                        numbers[k] = ft_atoi(args[j]);
+                        k++;
+                        j++;                      
+                }
 		i++;
 	}
-	if (has_duplicates(numbers, argc - 1))
+        if (k == 0 && argc > 1)
+        {
+                free(numbers);
+                free(args);
+                ft_puterror(); 
+        }
+	if (has_duplicates(numbers, k))
 	{
 		free(numbers);
+                free(args);
 		ft_puterror();
 	}
-	if (ft_issorted(numbers, argc - 1))
+	if (ft_issorted(numbers, k))
 	{
 		free(numbers);
+                free(args);
 		exit(0);
 	}
+        k--;
+        i = 0;
+        while (i <= k)
+        {
+                add_to_stack(a, numbers[i]);
+                i++;
+        }
+        free(args);
 	free(numbers);
-	return (1);
 }

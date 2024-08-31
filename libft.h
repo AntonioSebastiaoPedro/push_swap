@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/30 16:42:09 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/08/31 18:43:37 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ int					check_direction(t_stack **a, t_stack *value_a, t_stack **b,
 int					check_mov(t_stack **a, t_stack *value);
 int					ft_lstissorted(t_stack *stack);
 int					ft_issorted(int *array, int size);
-int					validate_arguments(int argc, char **argv);
 int					ft_lstsize(t_stack *lst);
 int					ft_lstgetindex(t_stack **head, t_stack *value);
 int					calc_cost(t_stack **stack, t_stack *current);
 int					total_cost(t_stack **a, t_stack *value_a, t_stack **b,
 						t_stack *value_b);
+void				validate_arguments(int argc, char **argv, t_stack **a);
 void				ft_puterror(void);
+void				ft_freearray(char **array, int pos);
 void				ft_lstdelone(t_stack *node);
 void				*ft_calloc(size_t num, size_t size);
 void				*ft_memcpy(void *dest, const void *src, size_t num);
@@ -63,7 +64,7 @@ void				sa(t_stack **a);
 void				sb(t_stack **b);
 void				ss(t_stack **a, t_stack **b);
 void				sort_stack(t_stack **a, t_stack **b);
-void				add_to_stack(t_stack **a, char *val);
+void				add_to_stack(t_stack **a, int val);
 void				ft_putstr(char *s);
 void				sort_min(t_stack **a);
 void				calc_rotate_succesor(t_stack **a, t_stack *succesor);
