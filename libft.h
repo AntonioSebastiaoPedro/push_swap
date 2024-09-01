@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/31 21:14:05 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/09/01 00:48:09 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ long int			ft_strtol(char *str, char **endptr);
 size_t				ft_strlen(const char *str);
 int					ft_isdigit(int ch);
 int					ft_isint(char *str);
+int					ft_isempty(char *str);
+int					ft_tablen(char **tab);
+int					ft_issorted(int *array, int size);
 int					ft_atoi(const char *str);
 int					check_direction(t_stack **a, t_stack *value_a, t_stack **b,
 						t_stack *value_b);

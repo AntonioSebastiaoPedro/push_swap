@@ -14,9 +14,9 @@
 
 long int	ft_strtol(char *str, char **endptr)
 {
-	int	i;
+	int		i;
+	int		signal;
 	long	num;
-	int	signal;
 
 	signal = 1;
 	num = 0;
@@ -32,6 +32,6 @@ long int	ft_strtol(char *str, char **endptr)
 		num = num * 10 + str[i] - '0';
 		i++;
 	}
-        *endptr = &str[i];
-        return (num * signal);
+	*endptr = &str[i];
+	return (num * signal);
 }

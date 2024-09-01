@@ -14,7 +14,7 @@
 
 t_stack	*ft_lstlastprev(t_stack *head)
 {
-	t_stack *curr;
+	t_stack	*curr;
 
 	if (head == NULL || head->next == NULL)
 		return (NULL);

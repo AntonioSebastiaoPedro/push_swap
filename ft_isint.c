@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_isint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:30:25 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 08:10:15 by ansebast         ###   ########.fr       */
+/*   Created: 2024/09/01 00:41:25 by ansebast          #+#    #+#             */
+/*   Updated: 2024/09/01 00:41:59 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *s)
+int	ft_isint(char *str)
 {
-	if (!s)
-		return ;
-	while (*s != '\0')
-		write(1, s++, 1);
+	char	*endptr;
+	long	val;
+
+	if (*str == '\0' || (*str == '-' && *(str + 1) == '\0') || (*str == '+'
+			&& *(str + 1) == '\0'))
+		return (0);
+	val = ft_strtol(str, &endptr);
+	if (*endptr != '\0' || val < -2147483648 || val > 2147483647)
+		return (0);
+	return (1);
 }

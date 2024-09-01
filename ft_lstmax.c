@@ -14,7 +14,7 @@
 
 t_stack	*ft_lstmax(t_stack *head)
 {
-	t_stack *max_node;
+	t_stack	*max_node;
 
 	max_node = head;
 	while (head != NULL)

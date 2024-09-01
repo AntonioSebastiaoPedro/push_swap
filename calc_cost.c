@@ -69,7 +69,7 @@ void	calc_rotate_right(t_stack **b, t_stack **a, t_stack *right)
 
 void	calc_rotate_succesor(t_stack **a, t_stack *succesor)
 {
-	int count;
+	int	count;
 
 	if (check_mov(a, succesor) == 0)
 	{

@@ -69,8 +69,8 @@ void	rotate_successor_right(t_stack **a, t_stack *successor, t_stack **b,
 void	rev_rotate_successor_right(t_stack **a, t_stack *successor, t_stack **b,
 		t_stack *right)
 {
-	int cost_a;
-	int cost_b;
+	int	cost_a;
+	int	cost_b;
 
 	cost_a = calc_cost(a, successor);
 	cost_b = calc_cost(b, right);

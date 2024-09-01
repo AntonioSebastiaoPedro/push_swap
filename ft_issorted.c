@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_issorted.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:30:25 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 08:10:15 by ansebast         ###   ########.fr       */
+/*   Created: 2024/09/01 00:47:20 by ansebast          #+#    #+#             */
+/*   Updated: 2024/09/01 00:47:38 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *s)
+int	ft_issorted(int *array, int size)
 {
-	if (!s)
-		return ;
-	while (*s != '\0')
-		write(1, s++, 1);
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (array[i] > array[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }

@@ -14,7 +14,7 @@
 
 t_stack	*ft_lstnew(int value)
 {
-	t_stack *new_node;
+	t_stack	*new_node;
 
 	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)

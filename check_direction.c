@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_direction.c                                :+:      :+:    :+:   */
+/*   ft_check_direction.c                                :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,9 +22,9 @@ int	check_direction(t_stack **a, t_stack *value_a, t_stack **b,
 
 int	check_mov(t_stack **a, t_stack *value)
 {
-	int local;
-	int index;
-	int size;
+	int	local;
+	int	index;
+	int	size;
 
 	index = ft_lstgetindex(a, value);
 	size = ft_lstsize(*a);

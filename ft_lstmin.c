@@ -14,7 +14,7 @@
 
 t_stack	*ft_lstmin(t_stack *head)
 {
-	t_stack *min_node;
+	t_stack	*min_node;
 
 	min_node = head;
 	while (head != NULL)

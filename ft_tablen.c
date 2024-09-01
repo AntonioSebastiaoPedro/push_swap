@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 11:30:25 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 08:10:15 by ansebast         ###   ########.fr       */
+/*   Created: 2024/09/01 00:44:37 by ansebast          #+#    #+#             */
+/*   Updated: 2024/09/01 00:44:53 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *s)
+int	ft_tablen(char **tab)
 {
-	if (!s)
-		return ;
-	while (*s != '\0')
-		write(1, s++, 1);
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }
