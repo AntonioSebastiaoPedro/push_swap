@@ -1,8 +1,0 @@
-{
-        "files.associations": {
-                "*.embeddedhtml": "html",
-                "libft.h": "c",
-                "random": "c",
-                "numbers": "c"
-        }
-}
