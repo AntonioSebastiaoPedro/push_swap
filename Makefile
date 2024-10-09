@@ -6,7 +6,7 @@
 #    By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 11:32:47 by ansebast          #+#    #+#              #
-#    Updated: 2024/10/09 22:56:07 by ansebast         ###   ########.fr        #
+#    Updated: 2024/10/09 23:12:16 by ansebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,18 +36,18 @@ $(NAME): $(OBJ) $(LIBFT)
 	@echo "$(GREEN)Executable $(NAME) created successfully!$(RESET)"
 
 $(LIBFT):
-#	@echo "$(YELLOW)Creating the library libft.a ...$(RESET)"
-	@make bonus -C $(LIBSRC)
-#	@echo "$(GREEN)Library created successfully!$(RESET)"
+	@echo "$(YELLOW)Creating the library libft.a ...$(RESET)"
+	make bonus -C $(LIBSRC)
+	@echo "$(GREEN)Library created successfully!$(RESET)"
 
 clean:
 	@echo "$(RED)Removing all object files...$(RESET)"
-	@make clean -C $(LIBSRC)
+	make clean -C $(LIBSRC)
 	rm -f $(OBJ)
 
 fclean: clean
 	@echo "$(RED)Removing the executable and the library...$(RESET)"
-	@make fclean -C $(LIBSRC)
+	make fclean -C $(LIBSRC)
 	rm -f $(NAME)
 
 re: fclean all
