@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_direction.c                                :+:      :+:    :+:  */
+/*   check_direction.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 08:05:09 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 08:14:57 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:00:45 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	check_direction(t_stack **a, t_stack *value_a, t_stack **b,
 		t_stack *value_b)

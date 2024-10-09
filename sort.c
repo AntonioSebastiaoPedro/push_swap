@@ -6,11 +6,11 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:16:48 by ansebast          #+#    #+#             */
-/*   Updated: 2024/09/01 00:29:19 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/10/09 22:13:53 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 t_stack	*get_right(t_stack **a, t_stack **b, t_stack *head)
 {
@@ -46,7 +46,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 	while (ft_lstsize(*a) > 3)
 	{
 		pb(a, b);
-		ft_putstr("pb\n");
+		ft_putstr_fd("pb\n", 1);
 	}
 	sort_small_stack(a);
 	temp = *b;
@@ -72,7 +72,7 @@ void	sort_min(t_stack **a)
 		while (*a != min_node)
 		{
 			ra(a);
-			ft_putstr("ra\n");
+			ft_putstr_fd("ra\n", 1);
 		}
 	}
 	else
@@ -80,7 +80,7 @@ void	sort_min(t_stack **a)
 		while (*a != min_node)
 		{
 			rra(a);
-			ft_putstr("rra\n");
+			ft_putstr_fd("rra\n", 1);
 		}
 	}
 }

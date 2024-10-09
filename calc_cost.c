@@ -6,11 +6,11 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 08:02:50 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/31 21:19:57 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/10/09 22:13:06 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	calc_cost(t_stack **stack, t_stack *current)
 {
@@ -49,10 +49,10 @@ void	calc_rotate_right(t_stack **b, t_stack **a, t_stack *right)
 		while (count--)
 		{
 			rb(b);
-			ft_putstr("rb\n");
+			ft_putstr_fd("rb\n", 1);
 		}
 		pa(a, b);
-		ft_putstr("pa\n");
+		ft_putstr_fd("pa\n", 1);
 	}
 	else
 	{
@@ -60,10 +60,10 @@ void	calc_rotate_right(t_stack **b, t_stack **a, t_stack *right)
 		while (count--)
 		{
 			rrb(b);
-			ft_putstr("rrb\n");
+			ft_putstr_fd("rrb\n", 1);
 		}
 		pa(a, b);
-		ft_putstr("pa\n");
+		ft_putstr_fd("pa\n", 1);
 	}
 }
 
@@ -77,7 +77,7 @@ void	calc_rotate_succesor(t_stack **a, t_stack *succesor)
 		while (count)
 		{
 			ra(a);
-			ft_putstr("ra\n");
+			ft_putstr_fd("ra\n", 1);
 			count--;
 		}
 	}
@@ -87,7 +87,7 @@ void	calc_rotate_succesor(t_stack **a, t_stack *succesor)
 		while (count)
 		{
 			rra(a);
-			ft_putstr("rra\n");
+			ft_putstr_fd("rra\n", 1);
 			count--;
 		}
 	}

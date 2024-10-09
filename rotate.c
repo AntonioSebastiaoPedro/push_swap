@@ -6,11 +6,11 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:01:51 by ansebast          #+#    #+#             */
-/*   Updated: 2024/08/29 08:46:48 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:00:54 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 void	ra(t_stack **a)
 {

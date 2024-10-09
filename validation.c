@@ -6,11 +6,11 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 09:14:42 by ansebast          #+#    #+#             */
-/*   Updated: 2024/09/01 00:56:55 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:01:00 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	has_duplicates(int *arr, int size)
 {
