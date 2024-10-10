@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/10/09 21:03:13 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/10/10 08:26:12 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
 
 int		check_direction(t_stack **a, t_stack *value_a, t_stack **b,
 			t_stack *value_b);
