@@ -6,12 +6,12 @@
 #    By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 11:32:47 by ansebast          #+#    #+#              #
-#    Updated: 2024/10/10 00:08:20 by ansebast         ###   ########.fr        #
+#    Updated: 2024/10/10 08:20:09 by ansebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap
 BONUS = checker
 LIBSRC = ./libft
@@ -28,9 +28,6 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 YELLOW = \033[0;33m
 RESET = \033[0m
-
-INCLUDES = -I$(LIBSRC)
-LIBRARY = -L$(LIBSRC)
 
 all: $(NAME)
 
