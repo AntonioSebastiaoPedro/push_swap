@@ -6,7 +6,7 @@
 /*   By: ansebast <ansebast@student.42luanda.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 11:32:38 by ansebast          #+#    #+#             */
-/*   Updated: 2024/10/10 00:08:53 by ansebast         ###   ########.fr       */
+/*   Updated: 2024/10/10 08:01:51 by ansebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
-
 
 void	sort_stack(t_stack **a, t_stack **b);
 void	validate_arguments(int argc, char **argv, t_stack **a);
