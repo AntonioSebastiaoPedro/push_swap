@@ -1,7 +1,0 @@
-{
-	"files.associations": {
-		"*.embeddedhtml": "html",
-		"checker_bonus.h": "c",
-		"stdlib.h": "c"
-	}
-}
